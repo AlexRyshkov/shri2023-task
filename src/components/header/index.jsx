@@ -41,9 +41,12 @@ function Header() {
                 {links.map(({ href, label }) => (
                     <li key={label} className="header__item">
                         <a
-                            className="header__link header__link_current"
+                            className="header__link"
+                            {...(label === 'Сводка' && {
+                                'aria-current': 'page',
+                                className: 'header__link header__link_current',
+                            })}
                             href={`${import.meta.env.BASE_URL}${href}`}
-                            aria-current="page"
                         >
                             {label}
                         </a>

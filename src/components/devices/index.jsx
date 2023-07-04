@@ -1,21 +1,10 @@
 import React from 'react'
-import { TABS, TABS_KEYS } from './tabs.js'
+import { Data, TABS_KEYS } from './tabs/data.js'
 import Event from '../event'
 
-function Devices() {
-    const initedRef = React.useRef(false)
-    const [activeTab, setActiveTab] = React.useState('')
+function Devices({ activeTab }) {
     const ref = React.useRef()
     const [hasRightScroll, setHasRightScroll] = React.useState(false)
-
-    React.useEffect(() => {
-        if (!activeTab && !initedRef.current) {
-            initedRef.current = true
-            setActiveTab(
-                new URLSearchParams(location.search).get('tab') || 'all'
-            )
-        }
-    })
 
     let sizes = []
     const onSize = (size) => {
@@ -32,10 +21,6 @@ function Devices() {
         }
     })
 
-    const onSelectInput = (event) => {
-        setActiveTab(event.target.value)
-    }
-
     const onArrowCLick = () => {
         const scroller = ref.current.querySelector(
             '.section__panel:not(.section__panel_hidden)'
@@ -50,38 +35,6 @@ function Devices() {
 
     return (
         <>
-            <select
-                className="section__select"
-                defaultValue="all"
-                onInput={onSelectInput}
-            >
-                {TABS_KEYS.map((key) => (
-                    <option key={key} value={key}>
-                        {TABS[key].title}
-                    </option>
-                ))}
-            </select>
-
-            <ul role="tablist" className="section__tabs">
-                {TABS_KEYS.map((key) => (
-                    <li
-                        key={key}
-                        role="tab"
-                        aria-selected={key === activeTab ? 'true' : 'false'}
-                        tabIndex={key === activeTab ? '0' : undefined}
-                        className={
-                            'section__tab' +
-                            (key === activeTab ? ' section__tab_active' : '')
-                        }
-                        id={`tab_${key}`}
-                        aria-controls={`panel_${key}`}
-                        onClick={() => setActiveTab(key)}
-                    >
-                        {TABS[key].title}
-                    </li>
-                ))}
-            </ul>
-
             <div className="section__panel-wrapper" ref={ref}>
                 {TABS_KEYS.map((key) => (
                     <div
@@ -96,7 +49,7 @@ function Devices() {
                         aria-labelledby={`tab_${key}`}
                     >
                         <ul className="section__panel-list">
-                            {TABS[key].items.map((item, index) => (
+                            {Data[key].items.map((item, index) => (
                                 <Event key={index} {...item} onSize={onSize} />
                             ))}
                         </ul>

@@ -1,4 +1,4 @@
-export const TABS = {
+export const Data = {
     all: {
         title: 'Все',
         items: [
@@ -127,7 +127,8 @@ export const TABS = {
         ],
     },
 }
+
 for (let i = 0; i < 6; ++i) {
-    TABS.all.items = [...TABS.all.items, ...TABS.all.items]
+    Data.all.items = [...Data.all.items, ...Data.all.items]
 }
-export const TABS_KEYS = Object.keys(TABS)
+export const TABS_KEYS = Object.keys(Data)
