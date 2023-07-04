@@ -40,23 +40,23 @@
 }
 
 .event__icon_temp {
-    background-image: url(assets/icon_temperature.svg);
+    background-image: url(/icon_temperature.svg);
 }
 
 .event__icon_temp2 {
-    background-image: url(assets/icon_temperature_2.svg);
+    background-image: url(/icon_temperature_2.svg);
 }
 
 .event__icon_light {
-    background-image: url(assets/icon_sun.svg);
+    background-image: url(/icon_sun.svg);
 }
 
 .event__icon_light2 {
-    background-image: url(assets/icon_sun_2.svg);
+    background-image: url(/icon_sun_2.svg);
 }
 
 .event__icon_schedule {
-    background-image: url(assets/icon_scheduled.svg);
+    background-image: url(/icon_scheduled.svg);
 }
 
 .event__title {

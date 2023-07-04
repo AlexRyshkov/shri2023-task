@@ -4,7 +4,7 @@
     display: flex;
     gap: 0.9375rem;
     height: 20.6875rem;
-    background: no-repeat 50% 50% url(assets/bg@2x.png);
+    background: no-repeat 50% 50% url(/bg@2x.png);
     /*background-size: cover;*/
     background-size: 1260px;
     border-radius: 1.25rem;
@@ -120,7 +120,7 @@
 }
 
 .hero-dashboard__icon_rain {
-    background-image: url(assets/cloud-drizzle.svg);
+    background-image: url(/cloud-drizzle.svg);
 }
 
 .hero-dashboard__schedule {
