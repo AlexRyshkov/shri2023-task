@@ -32,7 +32,7 @@ function Tabs({ activeTab, onChange }) {
                         }
                         id={`tab_${key}`}
                         aria-controls={`panel_${key}`}
-                        onClick={() => setActiveTab(key)}
+                        onClick={() => onChange(key)}
                     >
                         {Data[key].title}
                     </li>
