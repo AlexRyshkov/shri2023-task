@@ -128,7 +128,7 @@ export const Data = {
     },
 }
 
-for (let i = 0; i < 6; ++i) {
+for (let i = 0; i < 1; ++i) {
     Data.all.items = [...Data.all.items, ...Data.all.items]
 }
 export const TABS_KEYS = Object.keys(Data)

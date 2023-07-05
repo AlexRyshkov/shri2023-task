@@ -1,12 +1,18 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import Dashboard from '../../components/dashboard/index.jsx'
 import Scenarios from '../../components/scenarios/index.jsx'
 import Devices from '../../components/devices/index.jsx'
 import Tabs from '../../components/devices/tabs/index.jsx'
 import './index.css'
+import { Data } from '../../components/devices/tabs/data.js'
 
 function Main() {
     const [activeDeviceTab, setActiveDeviceTab] = React.useState('')
+
+    const devices = useMemo(
+        () => Data[activeDeviceTab]?.items ?? [],
+        [activeDeviceTab]
+    )
 
     useEffect(() => {
         setActiveDeviceTab(
@@ -44,7 +50,9 @@ function Main() {
                         onChange={onChangeDeviceTab}
                     />
                 </div>
-                <Devices activeTab={activeDeviceTab} />
+                {devices.length > 0 && (
+                    <Devices activeTab={activeDeviceTab} devices={devices} />
+                )}
             </section>
         </main>
     )

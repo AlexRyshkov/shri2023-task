@@ -2,7 +2,7 @@ import React from 'react'
 import { Data, TABS_KEYS } from './tabs/data.js'
 import Event from '../event'
 
-function Devices({ activeTab }) {
+function Devices({ activeTab, devices }) {
     const ref = React.useRef()
     const [hasRightScroll, setHasRightScroll] = React.useState(false)
 
@@ -34,35 +34,32 @@ function Devices({ activeTab }) {
     }
 
     return (
-        <>
-            <div className="section__panel-wrapper" ref={ref}>
-                {TABS_KEYS.map((key) => (
-                    <div
-                        key={key}
-                        role="tabpanel"
-                        className={
-                            'section__panel' +
-                            (key === activeTab ? '' : ' section__panel_hidden')
-                        }
-                        aria-hidden={key === activeTab ? 'false' : 'true'}
-                        id={`panel_${key}`}
-                        aria-labelledby={`tab_${key}`}
-                    >
+        <div className="section__panel-wrapper" ref={ref}>
+            {TABS_KEYS.map((key) => (
+                <div
+                    key={key}
+                    role="tabpanel"
+                    className={
+                        'section__panel' +
+                        (key === activeTab ? '' : ' section__panel_hidden')
+                    }
+                    aria-hidden={key === activeTab ? 'false' : 'true'}
+                    id={`panel_${key}`}
+                    aria-labelledby={`tab_${key}`}
+                >
+                    {key === activeTab && (
                         <ul className="section__panel-list">
-                            {Data[key].items.map((item, index) => (
+                            {devices.map((item, index) => (
                                 <Event key={index} {...item} onSize={onSize} />
                             ))}
                         </ul>
-                    </div>
-                ))}
-                {hasRightScroll && (
-                    <div
-                        className="section__arrow"
-                        onClick={onArrowCLick}
-                    ></div>
-                )}
-            </div>
-        </>
+                    )}
+                </div>
+            ))}
+            {hasRightScroll && (
+                <div className="section__arrow" onClick={onArrowCLick}></div>
+            )}
+        </div>
     )
 }
 
